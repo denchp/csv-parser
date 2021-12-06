@@ -40,4 +40,12 @@ describe('CSV Parser', () => {
 
         expect(result).toEqual([['123', 'ab$\n$c', 'zyx'], ['456', 'def', 'wvu']])
     })
+
+    it('can use multi-character separator', () => {
+        const testString = '123##ab$\n$c##zyx\n456##def##wvu';
+
+        const result = parser(testString, '##', '$');
+
+        expect(result).toEqual([['123', 'ab$\n$c', 'zyx'], ['456', 'def', 'wvu']])
+    })
 });
